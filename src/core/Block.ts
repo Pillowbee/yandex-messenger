@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars'
 import { nanoid } from 'nanoid'
-import EventBus from './EventBus'
+import EventBus from './EventBus.ts'
 
 type Children = Record<string, Block>
 
@@ -72,8 +72,11 @@ export default class Block {
   }
 
   private _init() {
+    this.init()
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
   }
+
+  init() {}
 
   private _componentDidMount() {
     this.componentDidMount()
